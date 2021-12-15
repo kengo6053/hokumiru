@@ -1,0 +1,87 @@
+<%= stylesheet_link_tag 'index', :media => "all" %>
+
+<h4>トピックを検索</h4>
+    <%= form_tag({controller:"topics",action:"index"}, method: :get) do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag '検索する'  %>
+<% end %>
+
+<style>
+  table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+  }
+
+  td {
+    text-align: center;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>順位</th>
+      <th>トピック</th>
+      <th>コメント数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @topicss.each_with_index do |topic, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= link_to topic.first %></td>
+        <td><%= topic.second %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<%  @all_ranks.each.each.with_index(1) do |topic, i| %>
+  <%= link_to topic.title, topic_path(topic.id) %>
+  コメント数…
+  <%= topic.comments.count %>
+  <br>
+<% end %>
+
+
+<br>
+<% page_entries_info @topics %>
+
+<ul>
+  <% @topics.each do |topic, i| %>
+    <li><%= link_to topic.title, topic_path(topic.id) %></li>
+<%= link_to '[削除]', topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+<% end %>
+</ul>
+
+<%= paginate @topics %>
+
+<h3>新規トピック</h3>
+<%= form_for @topic do |f| %>
+    <div class="name">
+      <%= f.label :name %>
+      <%= f.text_field :name, :size => 140 %>
+    </div>
+
+    <div class="title">
+      <%= f.label :title %>
+      <%= f.text_field :title, :size => 140 %>
+    </div>
+
+
+    <div class="body">
+      <%= f.label :body %>
+      <%= f.text_field :body, :size => 140 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+    </div>
+
+    <%= f.submit "投稿する" %>
+  
+  <% end %>
+
+</div>

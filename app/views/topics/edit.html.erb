@@ -1,0 +1,18 @@
+<%= form_for @topic do |f| %>
+    <div class="name">
+    <%= f.label :name %>
+    <%= f.text_field :name, :size => 140 %>
+    </div>
+
+    <div class="title">
+    <%= f.label :title %>
+    <%= f.text_field :title, :size => 140 %>
+    </div>
+
+    <div class="body">
+    <%= f.label :body %>
+    <%= f.text_field :body, :size => 140 %>
+    </div>
+
+    <%= f.submit "編集する" %>
+<% end %>
