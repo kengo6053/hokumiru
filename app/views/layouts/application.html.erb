@@ -12,11 +12,10 @@
 
   <body>
     <header>
-      <h1>Hokumiru</h1>
+      <h1><%= link_to 'Hokumiru', topics_top_path %></h1>
       <div class="header-list">
       <ul>
         <li><%= link_to 'トピック一覧へ', topics_path %></li>
-        <li><%= link_to '新規投稿ページへ', new_topic_path %></li>
         <li><%= link_to 'トップへ戻る', topics_top_path %></li>
       </ul>
       </div>

@@ -1,19 +1,22 @@
-.tweets-container {
-    width: 50%;
+.memo-topics-container{
+    width: 80%;
     margin: 10px auto;
+    display: flex;
 }
+
 h3 {
-    width: 100px;
+    width: 200px;
     margin: 30px auto;
     text-align: center;
 }
-.tweet {
-    border-top: solid #00acee;
+.topics-container {
     margin-top: 10px;
     padding-top: 20px;
+    text-align: center;
 }
 .main-box {
-    margin: 5px 0;
+    border-top: solid rgb(139, 93, 93);
+    margin: 10px;
     display: flex;
     justify-content: space-between;
 }
