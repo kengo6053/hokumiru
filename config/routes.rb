@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :topics
   
   resources :comments, only: [:create]
-  
-  root 'topics#top'
+
 
 end
