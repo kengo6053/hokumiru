@@ -1,10 +1,12 @@
 <%= stylesheet_link_tag 'index', :media => "all" %>
 
-<div class="box">
-  <form action="/topics/search/">
-    <input type="text" name="q" id="q" value="" placeholder="トピックを検索" control-id="ControlID-1">
-    <input type="hidden" name="date" value="y" control-id="ControlID-2">
-  </form>
+<div class="memo-box">
+  <div class="box">
+    <form action="/topics/search/">
+      <input type="text" name="q" id="q" value="" placeholder="トピックを検索" control-id="ControlID-1">
+      <input type="hidden" name="date" value="y" control-id="ControlID-2">
+    </form>
+  </div>
 </div>
 
 <div class="memo-topics-container">
@@ -15,6 +17,7 @@
       <div class="main-box">
         <td><%= i %>位</td>
         <%= link_to topic.title, topic_path(topic.id) %>
+        <br>
         コメント数…
         <%= topic.comments.count %>
         <br>
@@ -41,17 +44,17 @@
     <%= paginate @topics %>
   </div>
 
-  <div class="topics-container">
+  <div class="topics-container2">
       <h3>新規トピック</h3>
       <%= form_for @topic do |f| %>
         <div class="main-box">
           <%= f.label :名前 %>
-          <%= f.text_field :name, :size => 20 %>
+          <%= f.text_field :name, :size => "10" %>
         </div>
           
         <div class="main-box">
           <%= f.label :タイトル %>
-          <%= f.text_field :title, :size => 50 %>
+          <%= f.text_field :title, :size=> "200" %>
         </div>
 
           <%= f.submit "投稿する" %>
