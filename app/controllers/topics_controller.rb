@@ -76,6 +76,6 @@ end
 
     private
     def topic_params
-        params.require(:topic).permit(:name, :title, :body, :image)
+        params.require(:topic).permit(:name, :title, :body, :created_at)
     end
 end
