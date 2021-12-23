@@ -47,17 +47,18 @@
   <div class="topics-container2">
       <h3>新規トピック</h3>
       <%= form_for @topic do |f| %>
-        <div class="main-box">
+        <div class="main-box2">
           <%= f.label :名前 %>
-          <%= f.text_field :name, :size => "10" %>
-        </div>
-          
-        <div class="main-box">
-          <%= f.label :タイトル %>
-          <%= f.text_field :title, :size=> "200" %>
+          <br>
+          <%= f.text_area :name, :cols => 20, :rows => 2 %>
         </div>
 
-          <%= f.submit "投稿する" %>
+        <div class="main-box2">
+          <%= f.label :タイトル %>
+          <%= f.text_area :title, :cols => 40, :rows => 4 %>
+        </div>
+
+          <%= f.submit "新規トピック作成", class: 'sign-btn' %>
         
       <% end %>
   </div>

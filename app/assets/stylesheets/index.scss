@@ -41,6 +41,11 @@ h3 {
     display: flex;
     justify-content: space-between;
 }
+.main-box2 {
+    border-top: solid rgb(139, 93, 93);
+    margin: 10px;
+    justify-content: space-between;
+}
 .time {
     display: flex;
     justify-content: flex-end;
@@ -51,4 +56,9 @@ h3 {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
+}
+
+.sign-btn {
+    width: 50px;
+    height: 30px;
 }
