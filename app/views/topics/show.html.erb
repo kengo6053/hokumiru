@@ -14,12 +14,11 @@
 
     <% @comments.each_with_index do |comment , idx| %>
       <div class="main-box3">
-      <%= idx + 1 %>. <%= comment.name %>  <%= comment.created_at %>
+      <%= idx + 1 %>. <%= comment.name; %> <%= comment.created_at %>
       <br>
       <%= comment.body %>
       <br>
       <%= image_tag comment.image_url, class:'image' if comment.image? %>
-
       </div>
     <% end %>
   </div>
