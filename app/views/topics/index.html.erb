@@ -1,16 +1,34 @@
 <%= stylesheet_link_tag 'index', :media => "all" %>
 
-<div class="memo-box">
-  <div class="box">
-    <form action="/topics/search/">
-      <input type="text" name="q" id="q" value="" placeholder="トピックを検索" control-id="ControlID-1">
-      <input type="hidden" name="date" value="y" control-id="ControlID-2">
-    </form>
-  </div>
+<div class="search2">
+<div class="search3">
+  <div class="catch">トピック検索</div>
+  <%= form_tag({controller:"topics",action:"index"}, method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "検索する", class: 'button' %>
+  <% end %>
+</div>
 </div>
 
 <div class="memo-topics-container">
   <div class="topics-container"> 
+    <h3>トピック一覧</h3>
+    <br>
+    <% page_entries_info @topics %>
+
+    <ul>
+    <% @topics.each do |topic, i| %>
+      <div class="main-box">
+        <li><%= link_to topic.title, topic_path(topic.id) %></li>
+        作成日:<%= topic.created_at %>
+      </div>
+    <% end %>
+    </ul>
+
+    <%= paginate @topics %>
+  </div>
+
+  <div class="topics-container2">
     <h3>コメント数ランキング</h3>
     <br>
     <% @all_ranks.each.each.with_index(1) do |topic, i| %>
@@ -26,39 +44,22 @@
     <% end %>
 
     <br>
-  
-    <h3>トピック一覧</h3>
-    <br>
-    <% page_entries_info @topics %>
-
-    <ul>
-    <% @topics.each do |topic, i| %>
-      <div class="main-box">
-        <li><%= link_to topic.title, topic_path(topic.id) %></li>
-        <p><%= @topic.created_at %></p>
-        <%= link_to '[削除]', topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+    
+    <h3>新規トピック</h3>
+    <%= form_for @topic do |f| %>
+      <div class="main-box2">
+        <%= f.label :名前 %>
+        <br>
+        <%= f.text_area :name, :cols => 20, :rows => 2 %>
       </div>
-    <% end %>
-    </ul>
 
-    <%= paginate @topics %>
-  </div>
+      <div class="main-box2">
+        <%= f.label :タイトル %>
+        <br>
+        <%= f.text_area :title, :cols => 40, :rows => 4 %>
+      </div>
 
-  <div class="topics-container2">
-      <h3>新規トピック</h3>
-      <%= form_for @topic do |f| %>
-        <div class="main-box2">
-          <%= f.label :名前 %>
-          <br>
-          <%= f.text_area :name, :cols => 20, :rows => 2 %>
-        </div>
-
-        <div class="main-box2">
-          <%= f.label :タイトル %>
-          <%= f.text_area :title, :cols => 40, :rows => 4 %>
-        </div>
-
-        <%= f.submit "新規トピック作成", class: 'button' %>
+      <%= f.submit "新規トピック作成", class: 'button' %>
         
       <% end %>
   </div>

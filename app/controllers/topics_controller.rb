@@ -1,13 +1,13 @@
 class TopicsController < ApplicationController
     def top
-        @topic = Topic.all
+        @topic = Topic.all.order(created_at: :desc)
         if params[:search] == nil
-                @topics= Topic.all
+                @topics= Topic.all.order(created_at: :desc)
             elsif params[:search] == ''
-                @topics= Topic.all
+                @topics= Topic.all.order(created_at: :desc)
             else
             #部分検索
-            @topics = Topic.where("body LIKE ? ",'%' + params[:search] + '%')
+            @topics = Topic.where("title LIKE ? ",'%' + params[:search] + '%')
         end
         @newTopic = Topic.new
     end
@@ -17,14 +17,14 @@ class TopicsController < ApplicationController
     end
 
     def index
-        @topics = Topic.all.page(params[:page]).per(10)
+        @topics= Topic.all.order(created_at: :desc).page(params[:page]).per(10)
         if params[:search] == nil
-            @topics= Topic.all.page(params[:page]).per(10)
+            @topics= Topic.all.order(created_at: :desc).page(params[:page]).per(10)
         elsif params[:search] == ''
-            @topics= Topic.all.page(params[:page]).per(10)
+            @topics= Topic.all.order(created_at: :desc).page(params[:page]).per(10)
         else
         #部分検索
-        @topics = Topic.where("body LIKE ? ",'%' + params[:search] + '%').page(params[:page]).per(10)
+            @topics = Topic.where("title LIKE ? ",'%' + params[:search] + '%').order(created_at: :desc).page(params[:page]).per(10)
         end
         @topic = Topic.new
 
@@ -37,10 +37,8 @@ class TopicsController < ApplicationController
     def show
         @topic = Topic.find(params[:id])
         @newcomment = Comment.new(:topic_id => params[:id])
-        @comments = Comment.where(topic_id: params[:id])
         @comments = @topic.comments
         @comment = Comment.new
-
     end
 
     def create

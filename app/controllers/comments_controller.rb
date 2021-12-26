@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
     def create
-        comment = Comment.new(params[:comment].permit(:topic_id, :title, :name, :body))
+        comment = Comment.new(params[:comment].permit(:topic_id, :title, :name, :body, :image))
         if comment.save
             flash[:success] = "コメントしました"
             redirect_back(fallback_location: root_path)

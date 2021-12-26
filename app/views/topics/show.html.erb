@@ -2,32 +2,29 @@
 
 <div class="memo-topics-container">
   <div class="topics-container">
-    <h2><%= @topic.title %>
-    <%= link_to "https://twitter.com/share?url=#{request.url}", target: '_blank' do %>
+    <h3><%= @topic.title %>
+    <%= link_to "https://twitter.com/share?url=#{request.url}" do %>
       <%= image_tag 'Twitter.svg', class:"logo-image" %>
     <% end %>
     <%= link_to "https://www.facebook.com/share?url=#{request.url}", target: '_blank' do %>
       <%= image_tag 'Facebook.svg', class:"logo-image" %>
     <% end %>
-    </h2>
+    </h3>
 
 
     <% @comments.each_with_index do |comment , idx| %>
-      <div class="main-box">
-      <p>
-        <%= idx + 1 %>. <%= comment.name %> : <%= comment.body %>        <%= @topic.created_at %>
-      </p>
-
-      <p>
-        <strong>Image:</strong>
-        <%= image_tag @comment.image if @comment.image? %>
-      </p>
+      <div class="main-box3">
+      <%= idx + 1 %>. <%= comment.name %>  <%= comment.created_at %>
+      <br>
+      <%= comment.body %>
+      <br>
+      <%= image_tag comment.image_url, class:'image' if comment.image? %>
 
       </div>
     <% end %>
   </div>
 
-  <div class="topics-container">
+  <div class="topics-container2">
     <h4>新規書き込み</h4>
     <%= form_for @newcomment, :url => comment_create_path do |f| %>
       <p>お名前</p>
@@ -36,7 +33,7 @@
       <p><%= f.text_area :body, :cols => 50, :rows => 4 %></p>
       
       <%= f.label :画像 %><br />
-      <%= f.file_field :image, class: "image" %>
+      <%= f.file_field :image %>
       
       <p><%= @newcomment.created_at %></p>
       <%= f.hidden_field :topic_id %>

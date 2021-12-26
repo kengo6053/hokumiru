@@ -1,7 +1,9 @@
-<h3>ようこそ！</h3>
+<h3>北大生のための掲示板『ほくみる』へようこそ！</h3>
 
 <h3>トピックを検索</h3>
-    <%= form_tag({controller:"topics",action:"index"}, method: :get) do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag '検索する'  %>
-<% end %>
+    <div class="topics-container">
+        <%= form_tag({controller:"topics",action:"index"}, method: :get) do %>
+            <%= text_field_tag :search %>
+            <%= submit_tag "検索する", class: 'button' %>
+        <% end %>
+    </div>

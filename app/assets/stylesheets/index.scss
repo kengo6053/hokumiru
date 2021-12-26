@@ -12,7 +12,7 @@
 }
 
 h3 {
-    width: 200px;
+    width: 500px;
     margin: 30px auto;
     text-align: center;
 }
@@ -46,6 +46,11 @@ h3 {
     margin: 10px;
     justify-content: space-between;
 }
+.main-box3 {
+    border-top: solid rgb(139, 93, 93);
+    margin: 10px;
+    text-align: left;
+}
 .time {
     display: flex;
     justify-content: flex-end;
@@ -64,13 +69,13 @@ h3 {
     font-size     : 6pt;        /* 文字サイズ */
     text-align    : center;      /* 文字位置   */
     cursor        : pointer;     /* カーソル   */
-    padding       : 4px 13px;   /* 余白       */
+    padding       : 4px 4px;   /* 余白       */
     background    : #a2b68e;     /* 背景色     */
     color         : #000000;     /* 文字色     */
     line-height   : 1em;         /* 1行の高さ  */
     transition    : .3s;         /* なめらか変化 */
     box-shadow    : 3px 3px 3px #666666;  /* 影の設定 */
-    border        : 2px solid #a2b68e;    /* 枠の指定 */
+    border        : 1px solid #a2b68e;    /* 枠の指定 */
 }
 .button:hover {
     box-shadow    : none;        /* カーソル時の影消去 */
@@ -79,4 +84,30 @@ h3 {
 }
 .logo-image{
     width: 5%;
+}
+.image{
+    width: 300px;
+    height: auto;
+}
+
+.search2{
+    background-color: #edf1ed;
+}
+
+.search3{
+    background-color: #edf1ed;
+    margin: 10px;
+}
+
+.logo{
+    width: 5px;
+    height: auto;
+}
+
+.catch {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 44px;
+    float: left;
+    color: #ce2a61;
 }
